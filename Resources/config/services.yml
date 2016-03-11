@@ -1,0 +1,37 @@
+services:
+    arii_joe_xml_connector.job_scheduler_subscriber:
+        class: Arii\JoeXmlConnectorBundle\Subscriber\JobScheduler
+        tags:
+          - { name: kernel.event_subscriber }
+        arguments:
+          - "%arii_joe_xml_connector%"
+          - "@arii_joe.job_scheduler"
+          - "@doctrine.orm.entity_manager"
+
+    arii_joe_xml_connector.job_subscriber:
+        class: Arii\JoeXmlConnectorBundle\Subscriber\Job
+        tags:
+          - { name: kernel.event_subscriber }
+        arguments:
+          - "%arii_joe_xml_connector%"
+          - "@arii_joe.job"
+          - "@doctrine.orm.entity_manager"
+
+    arii_joe_xml_connector.job_chain_subscriber:
+        class: Arii\JoeXmlConnectorBundle\Subscriber\JobChain
+        tags:
+          - { name: kernel.event_subscriber }
+        arguments:
+          - "%arii_joe_xml_connector%"
+          - "@arii_joe.job_chain"
+          - "@doctrine.orm.entity_manager"
+
+    arii_joe_xml_connector.order_subscriber:
+        class: Arii\JoeXmlConnectorBundle\Subscriber\Order
+        tags:
+          - { name: kernel.event_subscriber }
+        arguments:
+          - "%arii_joe_xml_connector%"
+          - "@arii_joe.order"
+          - "@doctrine.orm.entity_manager"
+
