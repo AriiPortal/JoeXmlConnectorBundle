@@ -21,7 +21,7 @@ class StartJob implements SpecificationInterface
     {
         return array(
             array(
-                'entityProperty' => 'after',
+                'entityProperty' => 'afterDelay',
                 'xmlName'        => 'after',
             ),
             array(
@@ -45,7 +45,7 @@ class StartJob implements SpecificationInterface
                 },
             ),
             array(
-                'entityProperty' => 'force',
+                'entityProperty' => 'forceStart',
                 'xmlName'        => 'force',
                 'filterToXml' => function ($value) {
                     return $value ? 'yes' : 'no';
@@ -59,7 +59,7 @@ class StartJob implements SpecificationInterface
                 'xmlName'        => 'job',
             ),
             array(
-                'entityProperty' => 'name',
+                'entityProperty' => 'taskName',
                 'xmlName'        => 'name',
             ),
             array(
@@ -85,5 +85,10 @@ class StartJob implements SpecificationInterface
                 'xmlGroup'                   => 'environment',
             ),
         );
+    }
+
+    public static function getContent()
+    {
+        return null;
     }
 }

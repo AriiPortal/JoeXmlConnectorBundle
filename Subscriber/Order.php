@@ -9,7 +9,7 @@ namespace Arii\JoeXmlConnectorBundle\Subscriber;
 
 use Arii\JOEBundle\Event\Order as Event;
 use Arii\JOEBundle\Entity\Order as Entity;
-use Arii\JOEBundle\Event\JobCollection as EventCollection;
+use Arii\JOEBundle\Event\OrderCollection as EventCollection;
 use Arii\JOEBundle\Service\Order as Service;
 use Arii\JoeXmlConnectorBundle\Converter\EntityToXML;
 use Arii\JoeXmlConnectorBundle\Converter\XMLToEntity;
@@ -77,9 +77,6 @@ class Order implements EventSubscriberInterface
 
         $oldName = $original->getName();
         $newName = $entity->getName();
-        dump($oldName);
-        dump($newName);
-        exit;
 
         $this->em->detach($original); // Detach the copy from the EntityManager
         $original = $this->em->merge($entity); // Attach the entity back to the EntityManager

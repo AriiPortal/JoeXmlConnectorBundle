@@ -31,4 +31,9 @@ class Ultimos implements SpecificationInterface
             ),
         );
     }
+
+    public static function getContent()
+    {
+        return null;
+    }
 }

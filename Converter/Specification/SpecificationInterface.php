@@ -13,4 +13,5 @@ interface SpecificationInterface
     public static function getEntityName();
     public static function getAttributes();
     public static function getChildren();
+    public static function getContent();
 }

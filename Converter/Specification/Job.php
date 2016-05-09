@@ -61,57 +61,11 @@ class Job implements SpecificationInterface
             array(
                 'entityProperty' => 'timeout',
                 'xmlName'        => 'timeout',
-                'filterToXml' => function ($value) {
-                    return $value->format('%s');
-                },
-                'filterToEntity' => function ($value) {
-                    $value = explode(':', $value);
-                    $return = 'PT';
-                    switch (count($value)) {
-                        case 1:
-                            $return .= $value[0] . 'S';
-                            break;
-                        case 2:
-                            $return .= $value[0] . 'M' . $value[1] . 'S';
-                            break;
-                        case 3:
-                            $return .= $value[0] . 'H' . $value[1] . 'M' . $value[2] . 'S';
-                            break;
-
-                        default:
-                            throw new \Exception("Bad Format for timeout");
-                            break;
-                    }
-                    return new DateInterval($return);
-                },
                 'default' => 0,
             ),
             array(
                 'entityProperty' => 'idleTimeout',
                 'xmlName'        => 'idle_timeout',
-                'filterToXml' => function ($value) {
-                    return $value->format('%s');
-                },
-                'filterToEntity' => function ($value) {
-                    $value = explode(':', $value);
-                    $return = 'PT';
-                    switch (count($value)) {
-                        case 1:
-                            $return .= $value[0] . 'S';
-                            break;
-                        case 2:
-                            $return .= $value[0] . 'M' . $value[1] . 'S';
-                            break;
-                        case 3:
-                            $return .= $value[0] . 'H' . $value[1] . 'M' . $value[2] . 'S';
-                            break;
-
-                        default:
-                            throw new \Exception("Bad Format for idle_timeout");
-                            break;
-                    }
-                    return new DateInterval($return);
-                },
                 'default' => 5,
             ),
             array(
@@ -201,26 +155,10 @@ class Job implements SpecificationInterface
             array(
                 'entityProperty' => 'warnIfShorterThan',
                 'xmlName'        => 'warn_if_shorter_than',
-                'filterToXml' => function ($value) {
-                    return !empty($value)
-                        ? $value->format('h:m:s')
-                        : '';
-                },
-                'filterToEntity' => function ($value) {
-                    return DateTime::createFromFormat('h:m:s', $value);
-                },
             ),
             array(
                 'entityProperty' => 'warnIfLongerThan',
                 'xmlName'        => 'warn_if_longer_than',
-                'filterToXml' => function ($value) {
-                    return !empty($value)
-                        ? $value->format('h:m:s')
-                        : '';
-                },
-                'filterToEntity' => function ($value) {
-                    return DateTime::createFromFormat('h:m:s', $value);
-                },
             ),
             array(
                 'entityProperty' => 'enabled',
@@ -304,5 +242,10 @@ class Job implements SpecificationInterface
                 'xmlElement'                 => 'commands',
             ),
         );
+    }
+
+    public static function getContent()
+    {
+        return null;
     }
 }

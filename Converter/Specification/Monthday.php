@@ -37,4 +37,9 @@ class Monthday implements SpecificationInterface
             ),
         );
     }
+
+    public static function getContent()
+    {
+        return null;
+    }
 }
