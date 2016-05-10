@@ -54,4 +54,9 @@ class Script implements SpecificationInterface
             ),
         );
     }
+
+    public static function getContent()
+    {
+        return 'code';
+    }
 }

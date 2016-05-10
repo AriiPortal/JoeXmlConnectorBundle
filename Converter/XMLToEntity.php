@@ -160,6 +160,29 @@ class XMLToEntity
             }
         }
 
+        $contentProperty = $spec::getContent();
+        if ($contentProperty != null)
+        {
+            $cdatanode = null;
+            foreach ($element->childNodes as $child)
+            {
+                if ($child->nodeType ==  XML_CDATA_SECTION_NODE)
+                {
+                    $cdatanode = $child;
+                    break;
+                }
+            }
+
+            if ($cdatanode != null)
+            {
+                $method = 'set' .  ucfirst($contentProperty);
+
+                if (method_exists($entity, $method)) {
+                    $entity->$method($cdatanode->data);
+                }
+            }
+        }
+
         if ($entity == new $entityName) {
             throw new NoResultException;
         }

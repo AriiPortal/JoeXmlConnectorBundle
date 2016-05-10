@@ -33,4 +33,9 @@ class ModifySpooler implements SpecificationInterface
     {
         return array();
     }
+
+    public static function getContent()
+    {
+        return null;
+    }
 }

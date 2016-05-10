@@ -3,7 +3,7 @@
 namespace Arii\JoeXmlConnectorBundle\Converter;
 
 use DOMDocument;
-use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 
 class EntityToXML
 {
@@ -96,20 +96,37 @@ class EntityToXML
                 $parent = $element;
             }
 
-            if (is_array($value) || $value instanceof ArrayCollection) {
+            $isEmpty = true;
+
+            if (is_array($value) || $value instanceof Collection) {
                 foreach ($value as $childValue) {
+                    $isEmpty = false;
+
                     $parent->appendChild(
                         $this->createElement($childValue, $childSpec['spec'])
                     );
                 }
             } else {
+                $isEmpty = false;
                 $parent->appendChild(
                     $this->createElement($value, $childSpec['spec'])
                 );
             }
 
-            if (!empty($childSpec['xmlGroup'])) {
+            if (!empty($childSpec['xmlGroup']) && !$isEmpty) {
                 $element->appendChild($parent);
+            }
+        }
+
+        $contentProperty = $spec::getContent();
+        if ($contentProperty != null)
+        {
+            $method = 'get' .  ucfirst($contentProperty);
+
+            if (method_exists($entity, $method)) {
+                $content = $entity->$method();
+                $cdata = $this->document->createCDATASection($content);
+                $element->appendChild($cdata);
             }
         }
 

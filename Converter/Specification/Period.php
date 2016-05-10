@@ -35,4 +35,9 @@ class Period extends AbstractTime
     {
         return array();
     }
+
+    public static function getContent()
+    {
+        return null;
+    }
 }

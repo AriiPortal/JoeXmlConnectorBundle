@@ -61,6 +61,7 @@ class Job implements EventSubscriberInterface
             $entity->getJobScheduler()->getName(),
             $entity->getName() . '.job.xml'
         );
+
         $this->fs->remove($filePath);
     }
 
@@ -77,9 +78,6 @@ class Job implements EventSubscriberInterface
 
         $oldName = $original->getName();
         $newName = $entity->getName();
-        dump($oldName);
-        dump($newName);
-        exit;
 
         $this->em->detach($original); // Detach the copy from the EntityManager
         $original = $this->em->merge($entity); // Attach the entity back to the EntityManager

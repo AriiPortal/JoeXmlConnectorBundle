@@ -2,6 +2,8 @@
 
 namespace Arii\JoeXmlConnectorBundle\Converter\Specification;
 
+use BFolliot\Date\DateInterval;
+
 class DelayAfterError implements SpecificationInterface
 {
 
@@ -19,37 +21,12 @@ class DelayAfterError implements SpecificationInterface
     {
         return array(
             array(
-                'entityProperty' => 'errorCount',
+                'entityProperty' => 'delayCount',
                 'xmlName'        => 'error_count',
             ),
             array(
                 'entityProperty' => 'delay',
                 'xmlName'        => 'delay',
-                'filterToXml' => function ($value) {
-                    if (!empty($value)) {
-                        return $value->format('%s');
-                    }
-                },
-                'filterToEntity' => function ($value) {
-                    $value = explode(':', $value);
-                    $return = 'PT';
-                    switch (count($value)) {
-                        case 1:
-                            $return .= $value[0] . 'S';
-                            break;
-                        case 2:
-                            $return .= $value[0] . 'M' . $value[1] . 'S';
-                            break;
-                        case 3:
-                            $return .= $value[0] . 'H' . $value[1] . 'M' . $value[2] . 'S';
-                            break;
-
-                        default:
-                            throw new \Exception("Bad Format for delay");
-                            break;
-                    }
-                    return new DateInterval($return);
-                },
             ),
         );
     }
@@ -57,5 +34,10 @@ class DelayAfterError implements SpecificationInterface
     public static function getChildren()
     {
         return array();
+    }
+
+    public static function getContent()
+    {
+        return null;
     }
 }

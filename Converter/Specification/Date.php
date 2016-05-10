@@ -44,4 +44,9 @@ class Date implements SpecificationInterface
             ),
         );
     }
+
+    public static function getContent()
+    {
+        return null;
+    }
 }

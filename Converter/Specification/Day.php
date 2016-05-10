@@ -21,6 +21,12 @@ class Day implements SpecificationInterface
             array(
                 'entityProperty' => 'day',
                 'xmlName'        => 'day',
+                'filterToXml' => function ($value) {
+                    return implode(' ', $value);
+                },
+                'filterToEntity' => function ($value) {
+                    return explode(' ', $value);
+                },
             ),
         );
     }
@@ -35,5 +41,10 @@ class Day implements SpecificationInterface
                 'xmlElement'                 => 'period',
             ),
         );
+    }
+
+    public static function getContent()
+    {
+        return null;
     }
 }

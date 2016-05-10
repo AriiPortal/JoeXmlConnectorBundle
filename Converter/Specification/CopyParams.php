@@ -19,7 +19,7 @@ class CopyParams implements SpecificationInterface
     {
         return array(
             array(
-                'entityProperty' => 'from',
+                'entityProperty' => 'fromSource',
                 'xmlName'        => 'from',
             ),
         );
@@ -28,5 +28,10 @@ class CopyParams implements SpecificationInterface
     public static function getChildren()
     {
         return array();
+    }
+
+    public static function getContent()
+    {
+        return null;
     }
 }

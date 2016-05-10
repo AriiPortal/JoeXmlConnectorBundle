@@ -24,4 +24,9 @@ class SchedulerLogLogCategoriesShow implements SpecificationInterface
     {
         return array();
     }
+
+    public static function getContent()
+    {
+        return null;
+    }
 }

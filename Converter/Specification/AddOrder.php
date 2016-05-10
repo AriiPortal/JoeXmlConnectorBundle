@@ -88,4 +88,9 @@ class AddOrder implements SpecificationInterface
             ),
         );
     }
+
+    public static function getContent()
+    {
+        return null;
+    }
 }

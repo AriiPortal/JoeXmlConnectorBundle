@@ -77,7 +77,7 @@ class RunTime extends AbstractTime
                 'entityCollectionAddMethode' => 'addMonthday',
                 'entityProperty'             => 'monthdayCollection',
                 'spec'                       => Monthday::class,
-                'xmlElement'                 => 'monthday',
+                'xmlElement'                 => 'monthdays',
             ),
             array(
                 'entityCollectionAddMethode' => 'addMonth',
@@ -97,5 +97,10 @@ class RunTime extends AbstractTime
                 'xmlElement'     => 'holidays',
             ),
         );
+    }
+
+    public static function getContent()
+    {
+        return null;
     }
 }

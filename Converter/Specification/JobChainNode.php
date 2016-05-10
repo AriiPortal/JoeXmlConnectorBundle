@@ -62,4 +62,9 @@ class JobChainNode implements SpecificationInterface
             ),
         );
     }
+
+    public static function getContent()
+    {
+        return null;
+    }
 }
