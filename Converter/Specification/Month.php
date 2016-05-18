@@ -21,6 +21,12 @@ class Month implements SpecificationInterface
             array(
                 'entityProperty' => 'month',
                 'xmlName'        => 'month',
+                'filterToXml' => function ($value) {
+                    return implode(' ', $value);
+                },
+                'filterToEntity' => function ($value) {
+                    return explode(' ', $value);
+                }
             ),
         );
     }

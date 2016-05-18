@@ -191,6 +191,12 @@ class Job implements SpecificationInterface
                 'xmlElement'                 => 'lock.use',
             ),
             array(
+                'entityCollectionAddMethode' => 'addMonitorUse',
+                'entityProperty'             => 'monitorUses',
+                'spec'                       => MonitorUse::class,
+                'xmlElement'                 => 'monitor.use',
+            ),
+            array(
                 'entityCollectionAddMethode' => 'addEnvironmentVariable',
                 'entityProperty'             => 'environmentVariables',
                 'spec'                       => Variable::class,
@@ -208,7 +214,8 @@ class Job implements SpecificationInterface
                 'xmlElement'     => 'script',
             ),
             array(
-                'entityProperty' => 'monitor',
+                'entityCollectionAddMethode' => 'addMonitor',
+                'entityProperty' => 'monitors',
                 'spec'           => Monitor::class,
                 'xmlElement'     => 'monitor',
             ),
