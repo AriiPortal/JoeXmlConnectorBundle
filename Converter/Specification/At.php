@@ -21,14 +21,6 @@ class At implements SpecificationInterface
             array(
                 'entityProperty' => 'at',
                 'xmlName'        => 'at',
-                'filterToXml' => function ($value) {
-                    return !empty($value)
-                        ? $value->format('Y-m-d')
-                        : '';
-                },
-                'filterToEntity' => function ($value) {
-                    return DateTime::createFromFormat('Y-m-d', $value);
-                },
             ),
         );
     }

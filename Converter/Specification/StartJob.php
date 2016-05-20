@@ -2,7 +2,6 @@
 
 namespace Arii\JoeXmlConnectorBundle\Converter\Specification;
 
-use DateTime;
 
 class StartJob implements SpecificationInterface
 {
@@ -27,22 +26,6 @@ class StartJob implements SpecificationInterface
             array(
                 'entityProperty' => 'at',
                 'xmlName'        => 'at',
-                'filterToXml' => function ($value) {
-                    return $value->format('Y-m-d h:m:s');
-                },
-                'filterToEntity' => function ($value) {
-                    if ($value == 'now') {
-                        return new DateTime;
-                    }
-
-                    $dateTime = DateTime::createFromFormat('Y-m-d h:m:s', $value);
-
-                    if (!$dateTime) {
-                        return new DateTime;
-                    } else {
-                        return $dateTime;
-                    }
-                },
             ),
             array(
                 'entityProperty' => 'forceStart',

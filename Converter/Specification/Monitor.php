@@ -29,6 +29,10 @@ class Monitor implements SpecificationInterface
                 'entityProperty' => 'ordering',
                 'xmlName'        => 'ordering',
             ),
+            array(
+                'entityProperty' => 'javaOptions',
+                'xmlName'        => 'java_options',
+           ),
         );
     }
 

@@ -180,15 +180,20 @@ class Job implements SpecificationInterface
         return array(
             array(
                 'entityProperty' => 'description',
-                'spec'           => IncludeFile::class,
-                'xmlElement'     => 'include',
-                'xmlGroup'       => 'description',
+                'spec'           => Description::class,
+                'xmlElement'     => 'description',
             ),
             array(
                 'entityCollectionAddMethode' => 'addLockUse',
                 'entityProperty'             => 'lockUses',
                 'spec'                       => LockUse::class,
                 'xmlElement'                 => 'lock.use',
+            ),
+            array(
+                'entityCollectionAddMethode' => 'addMonitorUse',
+                'entityProperty'             => 'monitorUses',
+                'spec'                       => MonitorUse::class,
+                'xmlElement'                 => 'monitor.use',
             ),
             array(
                 'entityCollectionAddMethode' => 'addEnvironmentVariable',
@@ -208,7 +213,8 @@ class Job implements SpecificationInterface
                 'xmlElement'     => 'script',
             ),
             array(
-                'entityProperty' => 'monitor',
+                'entityCollectionAddMethode' => 'addMonitor',
+                'entityProperty' => 'monitors',
                 'spec'           => Monitor::class,
                 'xmlElement'     => 'monitor',
             ),

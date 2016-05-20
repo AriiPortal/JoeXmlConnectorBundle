@@ -2,8 +2,6 @@
 
 namespace Arii\JoeXmlConnectorBundle\Converter\Specification;
 
-use DateTime;
-
 class AddOrder implements SpecificationInterface
 {
 
@@ -23,14 +21,6 @@ class AddOrder implements SpecificationInterface
             array(
                 'entityProperty' => 'at',
                 'xmlName'        => 'at',
-                'filterToXml' => function ($value) {
-                    return $value->getTimestamp();
-                },
-                'filterToEntity' => function ($value) {
-                    $dateTime = new DateTime;
-                    $dateTime->setTimestamp($value);
-                    return $dateTime;
-                },
             ),
             array(
                 'entityProperty' => 'endState',

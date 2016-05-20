@@ -123,10 +123,14 @@ class EntityToXML
         {
             $method = 'get' .  ucfirst($contentProperty);
 
-            if (method_exists($entity, $method)) {
+            if (method_exists($entity, $method))
+            {
                 $content = $entity->$method();
-                $cdata = $this->document->createCDATASection($content);
-                $element->appendChild($cdata);
+                if (!empty($content))
+                {
+                    $cdata = $this->document->createCDATASection($content);
+                    $element->appendChild($cdata);
+                }
             }
         }
 

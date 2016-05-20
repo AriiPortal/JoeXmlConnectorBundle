@@ -2,25 +2,29 @@
 
 namespace Arii\JoeXmlConnectorBundle\Converter\Specification;
 
-class Holiday implements SpecificationInterface
+class MonitorUse implements SpecificationInterface
 {
 
     public static function getXmlName()
     {
-        return 'holiday';
+        return 'monitor.use';
     }
 
     public static function getEntityName()
     {
-        return 'Arii\JOEBundle\Entity\Holiday';
+        return 'Arii\JOEBundle\Entity\MonitorUse';
     }
 
     public static function getAttributes()
     {
         return array(
             array(
-                'entityProperty' => 'date',
-                'xmlName'        => 'date',
+                'entityProperty' => 'monitor',
+                'xmlName'        => 'monitor',
+            ),
+            array(
+                'entityProperty' => 'ordering',
+                'xmlName'        => 'ordering',
             ),
         );
     }
