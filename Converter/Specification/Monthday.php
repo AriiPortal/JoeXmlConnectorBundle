@@ -31,7 +31,7 @@ class Monthday implements SpecificationInterface
             ),
             array(
                 'entityCollectionAddMethode' => 'addWeekday',
-                'entityProperty'             => 'weekdayCollection',
+                'entityProperty'             => 'weekdays',
                 'spec'                       => Weekday::class,
                 'xmlElement'                 => 'weekday',
             ),
