@@ -36,7 +36,7 @@ class Month implements SpecificationInterface
         return array(
             array(
                 'entityCollectionAddMethode' => 'addPeriod',
-                'entityProperty'             => 'periodCollection',
+                'entityProperty'             => 'periods',
                 'spec'                       => Period::class,
                 'xmlElement'                 => 'period',
             ),
