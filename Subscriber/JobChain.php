@@ -40,7 +40,7 @@ class JobChain implements EventSubscriberInterface
         return array(
            Event::ON_CREATE_POST           => 'onCreate',
            Event::ON_FETCH_POST            => 'onCreate',
-           Event::ON_UPDATE_POST           => 'onUpdate',
+           Event::ON_UPDATE_VALID          => 'onUpdate',
            Event::ON_DELETE_POST           => 'onDelete',
            EventCollection::ON_FETCH_ERROR => 'onCollectionFetch',
            EventCollection::ON_FETCH_POST  => 'onCollectionFetch',
@@ -69,18 +69,9 @@ class JobChain implements EventSubscriberInterface
         $entity = $event->getInput();
 
         // Check if fileName changed.
-
-        $original = clone $entity; // Create a copy of your object
-        $this->em->detach($entity); // Prevent your object from being refreshed
-        $original = $this->em->merge($original); // Attach the copy to the EntityManager
-        $this->em->refresh($original); // Get the database version of the entity
-
-        $oldName = $original->getName();
+        $original = $this->em->getUnitOfWork()->getOriginalEntityData($entity);
+        $oldName = $original['name'];
         $newName = $entity->getName();
-
-        $this->em->detach($original); // Detach the copy from the EntityManager
-        $original = $this->em->merge($entity); // Attach the entity back to the EntityManager
-
 
         if ($oldName != $newName) {
             $filePath = Path::join(
