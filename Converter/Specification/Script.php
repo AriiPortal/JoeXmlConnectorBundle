@@ -48,9 +48,10 @@ class Script implements SpecificationInterface
     {
         return array(
             array(
-                'entityProperty' => 'include',
-                'xmlElement'     => 'include',
-                'spec'           => IncludeFile::class,
+                'entityCollectionAddMethode' => 'addInclude',
+                'entityProperty'             => 'includes',
+                'spec'                       => IncludeFile::class,
+                'xmlElement'                 => 'include',
             ),
         );
     }

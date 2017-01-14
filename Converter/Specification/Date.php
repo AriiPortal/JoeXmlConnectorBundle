@@ -21,14 +21,6 @@ class Date implements SpecificationInterface
             array(
                 'entityProperty' => 'date',
                 'xmlName'        => 'date',
-                'filterToXml' => function ($value) {
-                    return !empty($value)
-                        ? $value->format('Y-m-d')
-                        : '';
-                },
-                'filterToEntity' => function ($value) {
-                    return DateTime::createFromFormat('Y-m-d', $value);
-                },
             ),
         );
     }

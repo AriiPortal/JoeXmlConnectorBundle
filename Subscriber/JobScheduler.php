@@ -80,7 +80,7 @@ class JobScheduler implements EventSubscriberInterface
         $newName = $this->getFolderPath($entity->getName());
 
         $this->em->detach($original); // Detach the copy from the EntityManager
-        $original = $this->em->merge($entity); // Attach the entity back to the EntityManager
+        $entity = $this->em->merge($entity); // Attach the entity back to the EntityManager
 
         // Create or rename.
         if (!$this->fs->exists($oldName)) {
